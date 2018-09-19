@@ -20,7 +20,8 @@
     "lint"
   ],
   "dependencies": {
-    "browl-util": "killmenot/browl-util"
+    "browl-util": "killmenot/browl-util",
+    "debug": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^4.9.0",
