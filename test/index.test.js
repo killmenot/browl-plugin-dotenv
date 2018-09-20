@@ -11,6 +11,7 @@ describe('browl-plugin-dotenv', () => {
   let repoConfig;
 
   let strategy;
+  let branch;
   let options;
 
   beforeEach(() => {
@@ -19,12 +20,11 @@ describe('browl-plugin-dotenv', () => {
     rootConfig = {
       conf_dir: '/etc/browl'
     };
-    repoConfig = {
-      baz: 'quux'
-    };
+    repoConfig = {};
 
     strategy = new NullStrategy(repo, rootConfig, repoConfig);
 
+    branch = 'develop';
     options = {
       cwd: '/var/www/webapp/develop'
     };
@@ -49,7 +49,7 @@ describe('browl-plugin-dotenv', () => {
 
       dotEnvPlugin(strategy);
 
-      strategy.create('develop', options).then(() => {
+      strategy.create(branch, options).then(() => {
         const actual = fs.readFileSync('/var/www/webapp/develop/.env').toString();
 
         expect(actual).equal(expected);
@@ -67,7 +67,7 @@ describe('browl-plugin-dotenv', () => {
 
       dotEnvPlugin(strategy);
 
-      strategy.create('develop', options).then(() => {
+      strategy.create(branch, options).then(() => {
         const actual = fs.readFileSync('/var/www/webapp/develop/.env').toString();
 
         expect(actual).equal(expected);
@@ -85,7 +85,7 @@ describe('browl-plugin-dotenv', () => {
 
       dotEnvPlugin(strategy);
 
-      strategy.create('develop', options).then(() => {
+      strategy.create(branch, options).then(() => {
         const actual = fs.readFileSync('/var/www/webapp/develop/foo/bar/.env').toString();
 
         expect(actual).equal(expected);

@@ -9,7 +9,7 @@ Browl plugin that copies an environment file to instance work directory.
 
 ### source
 Type: `string`
-The absolute or relative path (relative to repo directory) to the source of environment file
+The absolute or relative path (relative to repo config directory) to the source of environment file
 *Default*: './templates/.env'
 
 ### destination
